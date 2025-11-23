@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amarexx Tracking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #b71c1c; /* Red background */
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+    header {
+      background-color: #ffffff;
+      color: #b71c1c;
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      border-bottom: 4px solid #b71c1c;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      color: #000;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #b71c1c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #7f0000;
+    }
+    .result-box {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f5f5f5;
+      border-left: 6px solid #b71c1c;
+      border-radius: 10px;
+      display: none;
+      color: #000;
+    }
+    .timeline div {
+      margin: 10px 0;
+      font-size: 15px;
+    }
+    .timeline div span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>AMAREXX</header>
+
+  <div class="container">
+    <input type="text" id="trackInput" placeholder="Enter Tracking Number" />
+    <button onclick="trackNow()">Track Package</button>
+    <div id="result" class="result-box"></div>
+  </div>
+
+  <script>
+    function trackNow() {
+      const code = document.getElementById("trackInput").value.trim();
+      const result = document.getElementById("result");
+      const uniqueNumber = "67aaGhywoBotffsouth";
+
+      if(code === "") {
+        result.style.display = "block";
+        result.innerHTML = "Please enter a tracking number.";
+        return;
+      }
+
+      if(code !== uniqueNumber) {
+        result.style.display = "block";
+        result.innerHTML = "Invalid tracking number.";
+        return;
+      }
+
+      result.style.display = "block";
+      result.innerHTML = `
+        <b>Tracking Number:</b> ${uniqueNumber}<br><br>
+        <b>Origin:</b> Sana'a, Yemen<br>
+        <b>Destination:</b> Johannesburg, South Africa<br>
+        <b>Current Status:</b> In Transit — On the way to South Africa<br>
+        <b>Last Location:</b> Addis Ababa, Ethiopia (Transit Hub)<br><br>
+
+        <b>Tracking Timeline:</b>
+        <div class="timeline">
+          <div>📦 <span>Package Received</span> — Sana'a, Yemen</div>
+          <div>🚚 <span>Departure Scan</span> — Sana'a International Airport, Yemen</div>
+          <div>🛃 <span>Customs Clearance Completed</span> — Aden, Yemen</div>
+          <div>✈️ <span>Transit Flight</span> — Djibouti International Airport, Djibouti</div>
+          <div>🛰️ <span>Main Transit Hub</span> — Addis Ababa Bole Airport, Ethiopia</div>
+          <div>📍 <span>Preparing for Flight to Johannesburg</span> — Addis Ababa, Ethiopia</div>
+          <div>🏤 <span>Out for Delivery</span> — Pending</div>
+          <div>✅ <span>Delivered</span> — Pending</div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
